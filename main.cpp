@@ -2,7 +2,7 @@
 #include <functional>
 #include <iostream>
 
-#include "tests.h"
+#include "candle.h"
 
 //массив всех тестов, который мы заполняем в функции initTests
 static std::vector<std::function<bool()>> tests;
