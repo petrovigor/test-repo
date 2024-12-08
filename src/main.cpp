@@ -8,10 +8,31 @@
 //массив всех тестов, который мы заполняем в функции initTests
 static std::vector<std::function<bool()>> tests;
 
+/* Проверка, что в зеленой свече цена внутри тела */
+bool testBodyContainsGreenInside() {
+    Candle candle{10.0, 20.0, 20.0, 10.0};
 
+    return candle.bodyContains(Price{10.0});
+}
+
+/* Проверка, что в красной свече цена внутри тела */
+bool testBodyContainsRedInside() {
+    Candle candle{20.0, 10.0, 20.0, 10.0};
+
+    return candle.bodyContains(Price{15.0});
+}
+
+/* Проверка, что в красной свече цена на границе тела */
+bool testBodyContainsRedBorder() {
+    Candle candle{20.0, 10.0, 20.0, 10.0};
+
+    return candle.bodyContains(Price{10.0}) && candle.bodyContains(Price{20.0});
+}
 
 void initTests() {
-
+    tests.push_back(testBodyContainsGreenInside);
+    tests.push_back(testBodyContainsRedInside);
+    tests.push_back(testBodyContainsRedBorder);
 }
 
 int launchTests() {
