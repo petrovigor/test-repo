@@ -102,6 +102,31 @@ bool testBodySizeBorder() {
     return std::abs(candle.bodySize() - 0.0) < 0.0001;
 }
 
+/* Проверка на создание зеленой свечи */
+bool testIsGreen_1() {
+    Candle candle{Price{10.0}, Price{20.0}, Price{5.0}, Price{15.0}};
+
+    return candle.isGreen();
+}
+
+/* Проверка на создание красной свечи и инвертирование проверки,
+ * инвертирование проверки на зеленую свечу
+ */
+bool testIsGreen_2() {
+    Candle candle{Price{20.0}, Price{30.0}, Price{10.0}, Price{10.0}};
+
+    return !candle.isGreen();
+}
+
+/* Проверка на создание свечи с равными ценами открытия и закрытия,
+ * инвертирование проверки на зеленую свечу
+ */
+bool testIsGreen_3() {
+    Candle candle{Price{10.0}, Price{10.0}, Price{10.0}, Price{10.0}};
+
+    return !candle.isGreen();
+}
+
 void initTests() {
     /* Добавление тестов для метода bodyContains */
     tests.push_back(testBodyContainsGreenInside);
@@ -122,6 +147,11 @@ void initTests() {
     tests.push_back(testBodySizeHigh);
     tests.push_back(testBodySizeRedCandle);
     tests.push_back(testBodySizeBorder);
+
+    /* Добавление тестов для метода isGreen */
+    tests.push_back(testIsGreen_1);
+    tests.push_back(testIsGreen_2);
+    tests.push_back(testIsGreen_3);
 }
 
 int launchTests() {
@@ -143,7 +173,7 @@ int launchTests() {
     }
 
     std::cout << "\ntests " << failed << '/' << total << " failed!\n";
-    std::cout << "\ntests " << passed << '/' << total << " passed!\n";
+    std::cout << "tests " << passed << '/' << total << " passed!\n";
 
     /* 0 = success */
     return total - passed;
