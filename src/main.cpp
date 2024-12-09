@@ -79,6 +79,29 @@ bool testFullSizeEquals() {
     return std::abs(candle.fullSize() - 0.0) < 0.0001;
 }
 
+/* Создание свечи с ценой открытия 5 и ценой закрытия 20 */
+bool testBodySizeHigh() {
+    Candle candle{Price{5.0}, Price{20.0}, Price{5.0}, Price{20.0}};
+
+    return std::abs(candle.bodySize() - 15.0) < 0.0001;
+}
+
+/* Проверка вычисления размера тела при условии,
+ * что цена закрытия ниже цены открытия
+ */
+bool testBodySizeRedCandle() {
+    Candle candle{Price{20.0}, Price{30.0}, Price{10.0}, Price{10.0}};
+
+    return std::abs(candle.bodySize() - 10.0) < 0.0001;
+}
+
+/* Проверка свечи, при условии, что цена открытия равна цене закрытия */
+bool testBodySizeBorder() {
+    Candle candle{Price{10.0}, Price{10.0}, Price{10.0}, Price{10.0}};
+
+    return std::abs(candle.bodySize() - 0.0) < 0.0001;
+}
+
 void initTests() {
     /* Добавление тестов для метода bodyContains */
     tests.push_back(testBodyContainsGreenInside);
@@ -94,28 +117,33 @@ void initTests() {
     tests.push_back(testFullSizeHigh);
     tests.push_back(testFullSizeLow);
     tests.push_back(testFullSizeEquals);
+
+    /* Добавление тестов для метода bodySize */
+    tests.push_back(testBodySizeHigh);
+    tests.push_back(testBodySizeRedCandle);
+    tests.push_back(testBodySizeBorder);
 }
 
 int launchTests() {
     int total = 0;
     int passed = 0;
+    int failed = 0;
 
-    for (const auto& test : tests)
-    {
+    for (const auto& test : tests) {
         std::cout << "test #" << (total + 1);
-        if (test())
-        {
-            passed += 1;
+        if (test()) {
+            ++passed;
             std::cout << " passed\n";
-        }
-        else
-        {
+        } else {
+            ++failed;
             std::cout << " failed\n";
         }
+
         total += 1;
     }
 
-    std::cout << "\ntests " << passed << "/" << total << " passed!" << std::endl;
+    std::cout << "\ntests " << failed << '/' << total << " failed!\n";
+    std::cout << "\ntests " << passed << '/' << total << " passed!\n";
 
     /* 0 = success */
     return total - passed;
