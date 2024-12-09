@@ -1,3 +1,14 @@
 {
-    "C_Cpp.default.compilerPath": "d:\\VisualStudio_2022\\VC\\Tools\\MSVC\\14.42.34433\\bin\\Hostx64\\x64\\cl.exe"
+    "C_Cpp.default.compilerPath": "d:\\VisualStudio_2022\\VC\\Tools\\MSVC\\14.42.34433\\bin\\Hostx64\\x64\\cl.exe",
+    "files.associations": {
+        "algorithm": "cpp",
+        "charconv": "cpp",
+        "memory": "cpp",
+        "optional": "cpp",
+        "xhash": "cpp",
+        "xlocnum": "cpp",
+        "xstring": "cpp",
+        "xtree": "cpp",
+        "xutility": "cpp"
+    }
 }
