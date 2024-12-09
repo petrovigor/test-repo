@@ -109,7 +109,7 @@ bool testIsGreen_1() {
     return candle.isGreen();
 }
 
-/* Проверка на создание красной свечи и инвертирование проверки,
+/* Проверка на создание красной свечи,
  * инвертирование проверки на зеленую свечу
  */
 bool testIsGreen_2() {
@@ -125,6 +125,31 @@ bool testIsGreen_3() {
     Candle candle{Price{10.0}, Price{10.0}, Price{10.0}, Price{10.0}};
 
     return !candle.isGreen();
+}
+
+/* Проверка на создание красной свечи */
+bool testIsRed_1() {
+    Candle candle{Price(20.0), Price(30.0), Price(10.0), Price(10.0)};
+
+    return candle.isRed();
+}
+
+/* Проверка на создание зеленой свечи,
+ * инвертирование проверки на красную свечу
+ */
+bool testIsRed_2() {
+    Candle candle{Price(10.0), Price(20.0), Price(5.0), Price(15.0)};
+
+    return !candle.isRed();
+}
+
+/* Проверка на создание свечи с равными ценами открытия и закрытия,
+ * инвертирование проверки на красную свечу
+ */
+bool testIsRed_3() {
+    Candle candle{Price(10.0), Price(10.0), Price(10.0), Price(10.0)};
+
+    return !candle.isRed();
 }
 
 void initTests() {
@@ -152,6 +177,11 @@ void initTests() {
     tests.push_back(testIsGreen_1);
     tests.push_back(testIsGreen_2);
     tests.push_back(testIsGreen_3);
+
+    /* Добавление тестов для метода isRed */
+    tests.push_back(testIsRed_1);
+    tests.push_back(testIsRed_2);
+    tests.push_back(testIsRed_3);
 }
 
 int launchTests() {
