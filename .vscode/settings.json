@@ -9,6 +9,7 @@
         "xlocnum": "cpp",
         "xstring": "cpp",
         "xtree": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "cstdlib": "cpp"
     }
 }
