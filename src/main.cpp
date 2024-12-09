@@ -4,6 +4,7 @@
 #include <vector>
 #include <functional>
 #include <iostream>
+#include <cmath>
 
 //массив всех тестов, который мы заполняем в функции initTests
 static std::vector<std::function<bool()>> tests;
@@ -53,6 +54,31 @@ bool testContainsBorder() {
     return candle.contains(Price{15.0}) && candle.contains(Price{15.0});
 }
 
+/* Проверка правильного расчета размера свечи,
+ * когда верхняя цена больше нижней
+ */
+bool testFullSizeHigh() {
+    Candle candle{Price{10.0}, Price{20.0}, Price{5.0}, Price{15.0}};
+
+    return std::abs(candle.fullSize() - 15.0) < 0.0001;
+}
+
+/* Проверка правильного расчета размера свечи,
+ * когда верхняя цена меньше нижней
+ */
+bool testFullSizeLow() {
+    Candle candle{Price{20.0}, Price{10.0}, Price{15.0}, Price{5.0}};
+
+    return std::abs(candle.fullSize() - 5.0) < 0.0001;
+}
+
+/* Проверка случая, когда все цены равны */
+bool testFullSizeEquals() {
+    Candle candle{Price{10.0}, Price{10.0}, Price{10.0}, Price{10.0}};
+
+    return std::abs(candle.fullSize() - 0.0) < 0.0001;
+}
+
 void initTests() {
     /* Добавление тестов для метода bodyContains */
     tests.push_back(testBodyContainsGreenInside);
@@ -63,6 +89,11 @@ void initTests() {
     tests.push_back(testContainsInside);
     tests.push_back(testContainsOutside);
     tests.push_back(testContainsBorder);
+
+    /* Добавление тестов для метода fullSize */
+    tests.push_back(testFullSizeHigh);
+    tests.push_back(testFullSizeLow);
+    tests.push_back(testFullSizeEquals);
 }
 
 int launchTests() {
