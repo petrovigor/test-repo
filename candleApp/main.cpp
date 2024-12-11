@@ -18,6 +18,10 @@ void initTests()
   tests.push_back(test_Contains_IfGreen);
   tests.push_back(test_Contains_IfRed);
   tests.push_back(test_Contains_OutOfBorderIfGreen);
+
+  tests.push_back(test_FullSize_IfGreen);
+  tests.push_back(test_FullSize_IfLowAdvantageToHigh);
+  tests.push_back(test_FullSize_IfNegativeHighOrLow);
 }
 
 int launchTests()

@@ -17,9 +17,12 @@ bool test_Contains_IfRed();
 // Тени свечи не содержат цену при условии зеленой свечи
 bool test_Contains_OutOfBorderIfGreen();
 
+// Полный размер нормальной зеленой свечи
 bool test_FullSize_IfGreen();
-bool test_FullSize_IfRed();
-bool test_FullSize_IfGreenAndRed();
+// Параметр high меньше low (candle.low = high и candle.high = low)
+bool test_FullSize_IfLowAdvantageToHigh();
+// Параметр high или low при создании свечи задан отрицательным (candle.low = -low или candle.high = -high)
+bool test_FullSize_IfNegativeHighOrLow();
 
 bool test_BodySize_IfGreen();
 bool test_BodySize_IfRed();

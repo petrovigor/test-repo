@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cmath>
 #include "tests/tests.h"
 #include "candle/candle.h"
 
@@ -57,4 +58,25 @@ bool test_Contains_OutOfBorderIfGreen()
            !candle.contains(9.99999) &&
            !candle.contains(5.0) &&
            !candle.contains(30.0);
+}
+
+// Полный размер нормальной зеленой свечи
+bool test_FullSize_IfGreen()
+{
+    Candle candle{0.0, 25.0, 10.0, 0.0};
+    return std::abs(candle.full_size() - 15.0) < 1e-3;
+}
+
+// Параметр high меньше low (candle.low = high и candle.high = low)
+bool test_FullSize_IfLowAdvantageToHigh()
+{
+    Candle candle{0.0, 10.0, 25.0, 0.0};
+    return std::abs(candle.full_size() - 15.0) < 1e-3;
+}
+
+// Параметр high или low при создании свечи задан отрицательным (candle.low = -low или candle.high = -high)
+bool test_FullSize_IfNegativeHighOrLow()
+{
+    return !(std::abs(Candle(0.0, -10.0, 25.0, 0.0).full_size() - 15.0) < 1e-3) &&
+           !(std::abs(Candle(0.0, 10.0, -25.0, 0.0).full_size() - 15.0) < 1e-3);
 }
