@@ -14,6 +14,10 @@ void initTests()
   tests.push_back(test_BodyContains_IfGreen);
   tests.push_back(test_BodyContains_IfRed);
   tests.push_back(test_BodyContains_OutOfBorderIfGreen);
+
+  tests.push_back(test_Contains_IfGreen);
+  tests.push_back(test_Contains_IfRed);
+  tests.push_back(test_Contains_OutOfBorderIfGreen);
 }
 
 int launchTests()
