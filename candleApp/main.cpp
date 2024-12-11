@@ -30,6 +30,10 @@ void initTests()
   tests.push_back(test_IsGreen_IfGreen);
   tests.push_back(test_IsGreen_IfRed);
   tests.push_back(test_IsGreen_IfNone);
+
+  tests.push_back(test_IsRed_IfGreen);
+  tests.push_back(test_IsRed_IfRed);
+  tests.push_back(test_IsRed_IfNone);
 }
 
 int launchTests()
