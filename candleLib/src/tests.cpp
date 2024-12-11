@@ -67,7 +67,7 @@ bool test_FullSize_IfGreen()
     return std::abs(candle.full_size() - 15.0) < 1e-3;
 }
 
-// Параметр high меньше low (candle.low = high и candle.high = low)
+// При создании свечи параметр high меньше low (candle.low = high и candle.high = low)
 bool test_FullSize_IfLowAdvantageToHigh()
 {
     Candle candle{0.0, 10.0, 25.0, 0.0};
@@ -79,4 +79,25 @@ bool test_FullSize_IfNegativeHighOrLow()
 {
     return !(std::abs(Candle(0.0, -10.0, 25.0, 0.0).full_size() - 15.0) < 1e-3) &&
            !(std::abs(Candle(0.0, 10.0, -25.0, 0.0).full_size() - 15.0) < 1e-3);
+}
+
+// Размер тела нормальной зеленой свечи
+bool test_BodySize_IfGreen()
+{
+    Candle candle{15.0, 25.0, 10.0, 20.0};
+    return std::abs(candle.body_size() - 5.0) < 1e-3;
+}
+
+// Размер тела нормальной красной свечи
+bool test_BodySize_IfRed()
+{
+    Candle candle{20.0, 25.0, 10.0, 15.0};
+    return std::abs(candle.body_size() - 5.0) < 1e-3;
+}
+
+// Размер тела нулевой свечи
+bool test_BodySize_IfNullBody()
+{
+    Candle candle{15.0, 25.0, 10.0, 15.0};
+    return std::abs(candle.body_size() - 0.0) < 1e-3;
 }

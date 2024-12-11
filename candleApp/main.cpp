@@ -22,6 +22,10 @@ void initTests()
   tests.push_back(test_FullSize_IfGreen);
   tests.push_back(test_FullSize_IfLowAdvantageToHigh);
   tests.push_back(test_FullSize_IfNegativeHighOrLow);
+
+  tests.push_back(test_BodySize_IfGreen);
+  tests.push_back(test_BodySize_IfRed);
+  tests.push_back(test_BodySize_IfNullBody);
 }
 
 int launchTests()

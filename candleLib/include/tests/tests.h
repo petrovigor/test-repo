@@ -19,14 +19,17 @@ bool test_Contains_OutOfBorderIfGreen();
 
 // Полный размер нормальной зеленой свечи
 bool test_FullSize_IfGreen();
-// Параметр high меньше low (candle.low = high и candle.high = low)
+// При создании свечи параметр high меньше low (candle.low = high и candle.high = low)
 bool test_FullSize_IfLowAdvantageToHigh();
 // Параметр high или low при создании свечи задан отрицательным (candle.low = -low или candle.high = -high)
 bool test_FullSize_IfNegativeHighOrLow();
 
+// Размер тела нормальной зеленой свечи
 bool test_BodySize_IfGreen();
+// Размер тела нормальной красной свечи
 bool test_BodySize_IfRed();
-bool test_BodySize_IfGreenAndRed();
+// Размер тела нулевой свечи
+bool test_BodySize_IfNullBody();
 
 bool test_IsGreen_IfGreen();
 bool test_IsGreen_IfRed();
