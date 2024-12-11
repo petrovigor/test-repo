@@ -26,6 +26,10 @@ void initTests()
   tests.push_back(test_BodySize_IfGreen);
   tests.push_back(test_BodySize_IfRed);
   tests.push_back(test_BodySize_IfNullBody);
+
+  tests.push_back(test_IsGreen_IfGreen);
+  tests.push_back(test_IsGreen_IfRed);
+  tests.push_back(test_IsGreen_IfNone);
 }
 
 int launchTests()

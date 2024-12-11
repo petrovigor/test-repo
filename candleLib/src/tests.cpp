@@ -101,3 +101,24 @@ bool test_BodySize_IfNullBody()
     Candle candle{15.0, 25.0, 10.0, 15.0};
     return std::abs(candle.body_size() - 0.0) < 1e-3;
 }
+
+// Тест зеленой свечи
+bool test_IsGreen_IfGreen()
+{
+    Candle candle{15.0, 25.0, 10.0, 20.0};
+    return candle.is_green();
+}
+
+// Тест красной свечи
+bool test_IsGreen_IfRed()
+{
+    Candle candle{20.0, 25.0, 10.0, 15.0};
+    return candle.is_red();
+}
+
+// Тест свечи при open == close
+bool test_IsGreen_IfNone()
+{
+    Candle candle{15.0, 25.0, 10.0, 15.0};
+    return !candle.is_green() && !candle.is_red();
+}

@@ -31,12 +31,18 @@ bool test_BodySize_IfRed();
 // Размер тела нулевой свечи
 bool test_BodySize_IfNullBody();
 
+// Тест зеленой свечи
 bool test_IsGreen_IfGreen();
+// Тест красной свечи
 bool test_IsGreen_IfRed();
+// Тест свечи при open == close
 bool test_IsGreen_IfNone();
 
+// Тест зеленой свечи
 bool test_IsRed_IfGreen();
+// Тест красной свечи
 bool test_IsRed_IfRed();
+// Тест свечи при open == close
 bool test_IsRed_IfNone();
 
 #endif
