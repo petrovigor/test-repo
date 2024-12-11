@@ -1,8 +1,6 @@
 ﻿#ifndef CANDLELIB_INCLUDE_CANDLE_CANDLE_H_
 #define CANDLELIB_INCLUDE_CANDLE_CANDLE_H_
 
-#pragma once
-
 #include <stdint.h>
 #include <string>
 
